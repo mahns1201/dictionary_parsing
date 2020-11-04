@@ -1,18 +1,16 @@
-# list내에 ''삭제
+test_list = []
+aa = []
+aaa = ''
 
-def delete_non(line):
-    NON_COUNT = line.count('')
-    
-    if NON_COUNT == 0:
-        return
-        
-    while NON_COUNT > 0:
-        NON_COUNT -= 1
-        line.remove('')
+test = '<a herf = "https://www.naver.com/">#예시</a> <a herf = "https://www.naver.com/">#예시2</a>'
 
-line = ['---', '# Title', '[라벨]', '![Common](../input/image/Label_Common.png)![Backend](../input/image/Label_Backend.png)![Frontend](../input/image/Label_Frontend.png)![Database](../input/image/Label_Database.png)![Devops](../input/image/Label_Devops.png)', '[관련 기술]', '<a herf = "https://www.naver.com/">#예시</a> <a herf = "https://www.naver.com/">#예시2</a>', '---']
+test_list = test.split('</a>')
+del test_list[-1]
 
-delete_non(line)
+print(test_list)
+for i in range(len(test_list)):
+    a = test_list[i].find('#')
+    aaa = test_list[i]
+    aa.append(aaa[a + 1 : ])
 
-print(line)
-
+print(aa)
