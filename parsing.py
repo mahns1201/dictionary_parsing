@@ -9,7 +9,7 @@ reserved_words = {'title' : '', 'label' : '', 'relation' : '', 'slug' : ''}
 def preprocess():
     SPLIT_NUM = 0
 
-    with open("./DIC/script.md", 'r', encoding = 'utf-8') as f:
+    with open("./DIC/_script.md", 'r', encoding = 'utf-8') as f:
         lines = f.readlines()
         lines = list(map(lambda s: s.strip(), lines))
 
@@ -49,10 +49,11 @@ def make_reserved_word(reserved_words, key_words):
     label = ''
     relation = ''
     slug = ''
-
+    
     title = key_words[1]
-    reserved_words['title'] = title[2:]
-    slug = title[2].upper() + '/' + title[2:]    # slug의 첫 문자는 대문자
+    title = title[1:].strip()
+    slug = title[0].upper() + '/' + title    # slug의 첫 문자는 대문자
+    reserved_words['title'] = title
     reserved_words['slug'] = slug
 
 
@@ -132,17 +133,29 @@ def main(reserved_words, contents):
     except OSError:
         print("Failed to create directory.")
     
-    # script 복사
-    origin_src = "./DIC/script.md"
+    # _script 복사
+    origin_src = "./DIC/_script.md"
     copy_src = dic_directory
-    copy_script_name = dic_directory + '/script.md'
+    copy_script_name = dic_directory + '/_script.md'
 
+    
     shutil.copy2(origin_src, copy_src)
     current_path = os.getcwd()
 
     os.chdir(dic_directory)
-    os.rename('script.md', file_title)
+    
+    file_names = os.listdir()
+
+    for i in file_names:
+        if i == file_title:
+            os.remove(file_title)
+
+    os.rename('_script.md', file_title)
     os.chdir(current_path)
+
+    # image 파일 복사
+
+    
 
 
     with open(file_path, 'w') as f:
@@ -152,7 +165,6 @@ def main(reserved_words, contents):
         f.write('relation: ' + reserved_words['relation'] + '\n')
         f.write('slug: ' + reserved_words['slug'] + '\n')
         f.write(key_words[-1] + '\n')
-        # f.write(contents)
 
         for i in range(len(contents)):
             f.write(contents[i] + '\n')
