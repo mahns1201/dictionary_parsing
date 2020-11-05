@@ -1,16 +1,20 @@
-test_list = []
-aa = []
-aaa = ''
-
 test = '<a herf = "https://www.naver.com/">#예시</a> <a herf = "https://www.naver.com/">#예시2</a>'
+test_temp = []
+test_temp = test.split('<a herf =')
+TEST_TEMP_ = 0
+relation = ''
 
-test_list = test.split('</a>')
-del test_list[-1]
+print(test_temp)
 
-print(test_list)
-for i in range(len(test_list)):
-    a = test_list[i].find('#')
-    aaa = test_list[i]
-    aa.append(aaa[a + 1 : ])
+del test_temp[0]
 
-print(aa)
+for i in test_temp:
+    TEST_TEMP_ = i.find('>#')
+    
+    if i == test_temp[len(test_temp) - 1]:
+        relation += i[TEST_TEMP_ + 1 : -7]
+
+    else:    
+        relation += i[TEST_TEMP_ + 1 : -4]
+
+#print(relation)

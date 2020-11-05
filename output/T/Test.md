@@ -1,6 +1,6 @@
 ---
 title: Test
-label: [Common][Backend][Frontend][Database][Devops]
+label: 
 relation: #예시#예시2
 slug: T/Test
 ---

@@ -1,8 +1,7 @@
 # Test
 
 [라벨]
-![Common](../input/image/Label_Common.png)![Backend](../input/image/Label_Backend.png)![Frontend](../input/image/Label_Frontend.png)![Database](../input/image/Label_Database.png)![Devops](../input/image/Label_Devops.png)
-
+![Common](../image/Label_Common.png)![Backend](../image/Label_Backend.png)![Frontend](../image/Label_Frontend.png)![Database](../image/Label_Database.png)![Devops](../image/Label_Devops.png)
 
 
 
