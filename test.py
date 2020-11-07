@@ -1,3 +1,9 @@
-test = {'a' : ['a', 'b']}
+test = []
 
-print(str(test['a']))
+def abc(test):
+    test.append('b')
+    
+    return test
+
+abc(test)
+print(test)
